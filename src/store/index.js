@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import modules, { dispatchModulesInit } from './modules';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
+  modules,
   state: {
     warning: null,
     error: null,
@@ -71,6 +73,16 @@ export default new Vuex.Store({
     logout({ commit }) {
       commit('setProfile', null);
       commit('setIsAuthorized', false);
-    }
-  }
+    },
+    init({ dispatch }) {
+      dispatch('setupTheme');
+    },
+  },
 });
+
+export const init = () => {
+  store.dispatch('init')
+    .then(() => dispatchModulesInit(store, modules));
+};
+
+export default store;

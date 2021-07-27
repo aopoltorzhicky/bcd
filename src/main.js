@@ -4,7 +4,7 @@ import App from './App.vue'
 
 import './styles';
 
-import store from '@/store'
+import store, { init as initStore } from '@/store'
 import router from '@/router'
 import VueAnalytics from 'vue-analytics'
 
@@ -204,4 +204,6 @@ api.getConfig().then(response => {
     vuetify,
     render: h => h(App),
   }).$mount('#app');
+
+  initStore();
 });

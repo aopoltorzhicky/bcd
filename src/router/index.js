@@ -33,6 +33,7 @@ import BigMapHistory from '@/views/big_map/HistoryTab.vue'
 import DAppList from '@/views/dapps/List.vue'
 import DApp from '@/views/dapps/DApp.vue'
 import MainDApp from '@/views/dapps/Main.vue'
+import Deploy from "../views/deploy/Deploy";
 
 Vue.use(VueRouter)
 
@@ -55,6 +56,13 @@ const router = new Router({
       },
       name: 'search',
       props: { default: true },
+    },
+    {
+      path: '/deploy',
+      components: {
+        default: Deploy
+      },
+      name: 'deploy',
     },
     {
       path: '/dapps',

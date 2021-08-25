@@ -1,19 +1,16 @@
 <template>
   <v-app-bar app clipped-left flat class="canvas pr-4">
-    <v-tooltip bottom>
-      <template v-slot:activator="{ on }">
-        <v-btn v-on="on" icon @click="toggleTheme" class="ml-2 text--secondary">
-          <v-icon v-if="$vuetify.theme.dark">mdi-white-balance-sunny</v-icon>
-          <v-icon v-else>mdi-weather-night</v-icon>
-        </v-btn>
-      </template>
-      <span v-if="$vuetify.theme.dark">Disable dark theme</span>
-      <span v-else>Enable dark theme</span>
-    </v-tooltip>
-
-    <v-btn icon class="ml-2 text--secondary" to="/docs">
-      <v-icon>mdi-api</v-icon>
-    </v-btn>
+    <div class="ml-2">
+      <DisableDarkTheme
+        bottom
+      />
+      <VisitApiReference
+        bottom
+      />
+      <VisitDeployContract
+        bottom
+      />
+    </div>
 
     <v-spacer></v-spacer>
     <v-btn
@@ -47,17 +44,15 @@
 </template>
 
 <script>
+import DisableDarkTheme from "../../components/Buttons/DisableDarkTheme";
+import VisitDeployContract from "../../components/Buttons/VisitDeployContract";
+import VisitApiReference from "../../components/Buttons/VisitApiReference";
 export default {
   name: "HomeToolbar",
+  components: {VisitApiReference, VisitDeployContract, DisableDarkTheme},
   computed: {
     apiDocsUrl() {
       return `${window.location.origin}/docs`;
-    },
-  },
-  methods: {
-    toggleTheme() {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
-      localStorage.setItem("dark", this.$vuetify.theme.dark);
     },
   },
 };

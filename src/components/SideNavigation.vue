@@ -81,24 +81,20 @@
 
     <template v-slot:append>
       <div class="d-flex flex-column align-center justify-center pa-5">
-        <v-tooltip right>
-          <template v-slot:activator="{ on }">
-            <v-btn v-on="on" icon to="/docs">
-              <v-icon color="grey lighten-2">mdi-api</v-icon>
-            </v-btn>
-          </template>
-          API reference
-        </v-tooltip>
-        <v-tooltip right>
-          <template v-slot:activator="{ on }">
-            <v-btn v-on="on" icon @click="toggleTheme" class="mt-6">
-              <v-icon v-if="$vuetify.theme.dark" color="grey lighten-2">mdi-white-balance-sunny</v-icon>
-              <v-icon v-else color="frey lighten-2">mdi-weather-night</v-icon>
-            </v-btn>
-          </template>
-          <span v-if="$vuetify.theme.dark">Disable dark theme</span>
-          <span v-else>Enable dark theme</span>
-        </v-tooltip>
+        <div class="mb-2">
+          <VisitDeployContract
+            right
+          />
+        </div>
+        <div class="mb-2">
+          <VisitApiReference
+            class="mb-2"
+            right
+          />
+        </div>
+        <DisableDarkTheme
+          right
+        />
       </div>
     </template>
   </v-navigation-drawer>
@@ -106,9 +102,13 @@
 
 <script>
 import { mapActions } from "vuex";
+import DisableDarkTheme from "./Buttons/DisableDarkTheme";
+import VisitDeployContract from "./Buttons/VisitDeployContract";
+import VisitApiReference from "./Buttons/VisitApiReference";
 
 export default {
   name: "SideNavigation",
+  components: {VisitApiReference, VisitDeployContract, DisableDarkTheme},
   props: {
     app: Boolean,
   },

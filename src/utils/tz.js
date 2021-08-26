@@ -50,12 +50,19 @@ export function shortcut(value, tail = 4) {
         `${value.slice(value.length - tail)}`
 }
 
-export function formatDatetime(timestamp, minDate = {val: 1, unit: "day"}) {
+export function formatDatetime(timestamp, minDate = { val: 1, unit: "day", isArticle: true }) {
     let d = dayjs(timestamp);
     if (timestamp) {
         if (d.year() < dayjs().year()) return d.format("D MMM'YY HH:mm");
         if (d.add(minDate.val, minDate.unit).isBefore(dayjs())) return d.format("D MMM HH:mm");
-        return d.fromNow();
+        if (minDate.isArticle) {
+            return d.fromNow();
+        } else {
+            if (d.fromNow().indexOf('a ') === 0) {
+                return d.fromNow().substring(2);
+            }
+            return d.fromNow();
+        }
     }
 }
 

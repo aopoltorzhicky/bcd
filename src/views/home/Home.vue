@@ -61,7 +61,7 @@
         <v-row justify="center" align="center" class="stats-row">
           <v-col cols="6">
             <v-row
-              class="caption font-weight-medium text-uppercase text-right text--secondary"
+              class="caption font-weight-medium text-uppercase text-center text--secondary"
               v-show="stats.length > 0"
               no-gutters
             >
@@ -77,12 +77,12 @@
                 </router-link>
               </v-col>
               <v-col>Contract calls</v-col>
-              <v-col class="text-left pl-12">Synced</v-col>
+              <v-col class="text-center pl-12">Synced</v-col>
             </v-row>
             <v-row
               v-for="(item, idx) in stats"
               :key="idx"
-              class="text-right my-2"
+              class="text-center my-2"
               justify="center"
               align="center"
               no-gutters
@@ -104,8 +104,8 @@
               <v-col>{{ item.unique_contracts }}</v-col>
               <v-col>{{ item.fa_count }}</v-col>
               <v-col>{{ item.contract_calls }}</v-col>
-              <v-col class="body-2 text-left pl-12">{{
-                helpers.formatDatetime(item.time)
+              <v-col class="body-2 text-center pl-12">{{
+                helpers.formatDatetime(item.time, { val: 1, unit: "day", isArticle: false })
               }}</v-col>
             </v-row>
           </v-col>

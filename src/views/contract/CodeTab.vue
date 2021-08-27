@@ -4,20 +4,6 @@
     <div v-else-if="selectedCode">
       <v-card tile flat outlined class="pa-0">
         <v-card-title class="d-flex sidebar px-4 py-2">
-          <v-select
-            v-if="codeVersions.length > 0"
-            v-model="selectedProtocol"
-            @change="getCode(selectedProtocol)"
-            :items="codeVersions"
-            item-text="proto"
-            item-value="protocol"
-            style="max-width: 160px;"
-            rounded
-            dense
-            background-color="data"
-            class="mb-1"
-            hide-details
-          ></v-select>
           <span
               v-if="!isCodeRendered && selectedCode && selectedCode.length > freezingAmount"
               class="ml-4 text--disabled rendering-percents"
@@ -113,21 +99,6 @@ export default {
       }
       return null;
     },
-    codeVersions() {
-      let versions = [];
-      if (this.migrations) {
-        versions = this.migrations
-          .filter(m => m.kind === "update")
-          .map(function(m) {
-            return {
-              proto: m.prev_protocol.slice(0, 8),
-              protocol: m.prev_protocol
-            };
-          });
-      }
-      versions.unshift({ proto: "Latest", protocol: "" });
-      return versions;
-    }
   },
   destroyed() {
     clearInterval(this.renderingInterval);

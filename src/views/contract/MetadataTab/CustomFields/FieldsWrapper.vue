@@ -27,6 +27,7 @@
         </v-col>
         <v-col>
           <vue-json-pretty
+            :key="`${vueJsonDeep}-pretty`"
             class="value-field"
             :data="field.value"
             :deep="vueJsonDeep"
@@ -68,12 +69,12 @@ export default {
   },
   methods: {
     toggleVueJsonDeep() {
-      this.vueJsonDeep = this.vueJsonDeep === DEFAULT_VUE_JSON_DEEP ? Infinity : DEFAULT_VUE_JSON_DEEP;
+      this.vueJsonDeep = this.vueJsonDeep === DEFAULT_VUE_JSON_DEEP ? Infinity : DEFAULT_VUE_JSON_DEEP
     }
   },
   data() {
     return {
-      vueJsonDeep: 1,
+      vueJsonDeep: DEFAULT_VUE_JSON_DEEP,
     }
   }
 }

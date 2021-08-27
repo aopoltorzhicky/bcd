@@ -72,23 +72,11 @@
         </template>
         Copy address
       </v-tooltip>
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn
-            v-on="on"
-            icon
-            @click="
-              () => {
-                $clipboard(link);
-                showClipboardOK();
-              }
-            "
-          >
-            <v-icon class="text--secondary">mdi-share-variant</v-icon>
-          </v-btn>
-        </template>
-        Share link
-      </v-tooltip>
+      <ShareLink
+        :alias="alias"
+        :link="link"
+        bottom
+      />
     </div>
     <v-divider></v-divider>
 
@@ -294,6 +282,7 @@ import LogItem from "@/views/contract/LogItem.vue";
 import AccountBox from "@/components/Dialogs/AccountBox.vue";
 import BakingBadFooter from "@/components/BakingBadFooter.vue";
 import { DATA_LOADING_STATUSES } from "@/utils/network";
+import ShareLink from "../../components/Buttons/ShareLink";
 
 export default {
   name: "SideBar",
@@ -307,6 +296,7 @@ export default {
     balance: Number,
   },
   components: {
+    ShareLink,
     SimilarItem,
     LogItem,
     AccountBox,

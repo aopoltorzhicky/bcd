@@ -123,6 +123,12 @@
               :key="item.hash + '_' + item.counter + '_' + key"
             />
           </v-expansion-panels>
+          <v-skeleton-loader
+            v-show="operationsLoading || mempoolLoading"
+            :loading="operationsLoading || mempoolLoading"
+            type="list-item-two-line, list-item-two-line, list-item-two-line"
+          >
+          </v-skeleton-loader>
           <span
             v-intersect="onDownloadPage"
             v-if="!loading && !downloaded"

@@ -41,21 +41,11 @@
         </template>
         Copy OPG hash
       </v-tooltip>
-      <v-tooltip top>
-        <template v-slot:activator="{ on }">
-          <v-btn
-            v-on="on"
-            icon
-            @click="() => {
-              $clipboard(opgLink);
-              showClipboardOK();
-            }"
-          >
-            <v-icon class="text--secondary">mdi-share-variant</v-icon>
-          </v-btn>
-        </template>
-        Share link
-      </v-tooltip>
+      <ShareLink
+        top
+        :alias="this.hash"
+        :link="opgLink"
+        />
     </div>
     <v-divider></v-divider>
     <v-skeleton-loader
@@ -143,6 +133,7 @@
 import { mapActions } from "vuex";
 import RawJsonViewer from "@/components/Dialogs/RawJsonViewer.vue";
 import BakingBadFooter from "@/components/BakingBadFooter.vue";
+import ShareLink from "../../components/Buttons/ShareLink";
 
 export default {
   name: "SideBar",
@@ -153,6 +144,7 @@ export default {
     loading: Boolean,
   },
   components: {
+    ShareLink,
     RawJsonViewer,
     BakingBadFooter,
   },

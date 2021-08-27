@@ -7,6 +7,7 @@
       class="py-0 px-4"
       ripple
       :class="statusHeaderClass"
+      :title="value.status"
     >
       <template v-slot:default="{ open }">
         <v-row no-gutters class="py-1">

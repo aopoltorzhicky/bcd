@@ -51,7 +51,7 @@
              <template v-else-if="item.type === 'token_metadata'">
               <span class="hash">Tokens</span>
               <span class="text--secondary" style="font-size: 20px;"> → </span>
-              <router-link class="serp-link" target="_blank" :to="`/${item.body.network}/${item.value}`">
+              <router-link class="serp-link" target="_blank" :to="`/${item.body.network}/${item.value}/tokens/?token_id=${item.body.token_id}`">
                 <span v-if="item.body.name" v-html="highlight(item.body.name)" class="alias"></span>
               </router-link>
             </template>

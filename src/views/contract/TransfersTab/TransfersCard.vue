@@ -148,7 +148,7 @@ export default {
           })
     },
     openToken(item) {
-      const path = { path: `/${item.network}/${item.contract}/tokens` };  // ?token_id=${item.token_id}
+      const path = {path: `/${item.network}/${item.contract}/tokens?token_id=${item.token_id}`};
       window.open(this.$router.resolve(path).href, "_blank");
     },
     isLackMetadata(item) {

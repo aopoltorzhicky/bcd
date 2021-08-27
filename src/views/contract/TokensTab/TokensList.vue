@@ -2,12 +2,19 @@
   <div class="ma-0 pa-0">
     <v-card flat outlined>
       <v-list class="ma-0 pa-0 data">
+        <v-skeleton-loader
+          v-if="isLoading"
+          :loading="isSpecificLoaded"
+          type="image"
+        >
+        </v-skeleton-loader>
         <v-list-item-group
+          v-else
           active-class="token-card-selected"
           mandatory
         >
           <template v-for="(item, i) in tokens">
-            <v-divider :key="`${i}-divider`" v-if="i != 0" />
+            <v-divider :key="item.token_id" v-if="i !== 0" />
             <v-list-item @click="selectedToken = item" :key="`${item.contract}:${item.token_id}`" class="token-card">
               <v-list-item-content>
                 <v-list-item-title>
@@ -37,6 +44,10 @@
 </template>
 
 <script>
+import { getQuery, isQuery } from "../../../utils/url";
+
+const TOKEN_ID_QUERY = 'token_id';
+
 export default {
   name: "TokensList",
   props: {
@@ -44,24 +55,74 @@ export default {
     address: String,
     tokensTotal: Number
   },
+  computed: {
+    isLoading() {
+      return !this.isSpecificLoaded && !this.isTokensLoaded;
+    }
+  },
   methods: {
     getTokens(offset, size) {
+      this.isTokensLoaded = false;
       this.api
         .getContractTokens(this.network, this.address, offset, size)
         .then((res) => {
           if (!res) return;
-          this.tokens = res;
-          this.selectedToken = this.tokens[0];
+          if (this.tokensPage === 1) {
+            const token_id = getQuery(TOKEN_ID_QUERY);
+            if (isQuery(TOKEN_ID_QUERY) && !this.tokens.length) {
+              this.getSpecificToken(token_id).then((res) => {
+                this.tokens = this.tokens.filter(token => token.token_id !== Number(token_id)).concat(res);
+              });
+            } else if (isQuery(TOKEN_ID_QUERY) && this.tokens.length) {
+              this.tokens = this.tokens.filter(token => token.token_id !== Number(token_id)).concat(res);
+            } else {
+              this.tokens = res;
+            }
+          } else {
+            this.tokens = res.filter(token => token.token_id !== Number(getQuery(TOKEN_ID_QUERY)));
+          }
+          if (this.tokensPage === 1 && !isQuery(TOKEN_ID_QUERY) || this.tokensPage > 1) {
+            this.selectedToken = this.tokens[0];
+          }
         })
         .catch((err) => {
           this.showError(err);
         })
+        .finally(() => {
+          this.isTokensLoaded = true;
+        })
+    },
+    getSpecificToken(token_id) {
+      this.isSpecificLoaded = false;
+      return this.api
+        .getContractToken(this.network, this.address, token_id)
+        .then((res) => {
+          if (res && res[0]) {
+            this.tokens = res;
+            this.selectedToken = res[0];
+          }
+        })
+        .finally(() => {
+          this.isSpecificLoaded = true;
+        })
+    },
+    getNextTokensAmount() {
+      const minusator = isQuery(TOKEN_ID_QUERY) && this.tokensPage === 1 ? 1 : 0;
+      return this.itemsPerPage - minusator;
     },
   },
   watch: {
     tokensPage: {
       handler(newVal) {
-        this.getTokens((newVal - 1) * this.itemsPerPage, this.itemsPerPage)
+        if (newVal === 1 && isQuery(TOKEN_ID_QUERY)) {
+          const token_id = getQuery(TOKEN_ID_QUERY);
+          this.getSpecificToken(token_id)
+            .then(() => {
+              this.getTokens((this.tokensPage - 1) * this.itemsPerPage, this.getNextTokensAmount());
+            })
+        } else {
+          this.getTokens((newVal - 1) * this.itemsPerPage, this.getNextTokensAmount());
+        }
       },
       immediate: true
     },
@@ -72,7 +133,7 @@ export default {
       immediate: true
     },
     selectedToken: {
-      handler(newVal) { 
+      handler(newVal) {
         this.$emit('selectedToken', newVal)
       },
       deep: true,
@@ -85,7 +146,9 @@ export default {
       selectedToken: null, 
       tokensPage: 1,
       itemsPerPage: 10,
-      tokensPageCount: 0
+      tokensPageCount: 0,
+      isSpecificLoaded: false,
+      isTokensLoaded: false,
     }
   }
 }

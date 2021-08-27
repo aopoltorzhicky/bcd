@@ -250,9 +250,22 @@ export class BetterCallApi {
       })
   }
 
+  getContractToken(network, address, token_id) {
+      return getCancellable(this.api, `/contract/${network}/${address}/tokens`, {
+          params: { token_id }
+      })
+          .then((res) => {
+              if (!res) { return res; }
+              if (res.status != 200) {
+                  throw new RequestFailedError(res);
+              }
+              return res.data
+          })
+  }
+
   getContractTokens(network, address, offset=0, size=maxSize) {
     return getCancellable(this.api, `/contract/${network}/${address}/tokens`, {
-      params: {offset, size}
+      params: { offset, size }
     })
       .then((res) => {
         if (!res) { return res; }

@@ -8,7 +8,7 @@
       rel="nofollow noopener"
       @click="sendSocialGtag('Discord')"
     >
-      <v-icon>mdi-discord</v-icon>
+      <v-icon>$si-discord</v-icon>
     </v-btn>
     <v-btn
       icon

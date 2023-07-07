@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Script1-Casual";
-    src: url("/fonts/script1-script-casual-normal.ttf");
+    src: url("../public/fonts/script1-script-casual-normal.ttf");
 }
 
 :root {

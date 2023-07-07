@@ -1,5 +1,14 @@
+const webpack = require("webpack");
+
 module.exports = {
-  "transpileDependencies": [
+  transpileDependencies: [
     "vuetify"
-  ]
+  ],
+  configureWebpack: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        
+      }),
+    ],
+  },
 }

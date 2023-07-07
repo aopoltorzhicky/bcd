@@ -4,7 +4,8 @@ import Vuetify from 'vuetify/lib';
 Vue.use(Vuetify);
 
 export function makeVuetify(dark) {
-    return new Vuetify({
+    
+    let vuetify = new Vuetify({
         theme: {
             dark: dark,
             options: {
@@ -65,5 +66,16 @@ export function makeVuetify(dark) {
                 }
             },
         },
+        icons: {
+            iconfont: 'mdi',
+        }
     });
+
+    const simpleIcons = require('simple-icons');
+    for (const iconSlug in simpleIcons) {
+        const icon = simpleIcons[iconSlug];
+        vuetify.framework.icons.values[`si-${icon.slug}`] = icon.path
+    }
+
+    return vuetify;
 }

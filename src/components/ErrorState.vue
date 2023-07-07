@@ -35,6 +35,10 @@ export default {
   },
   data: () => ({
     links: [
+    {
+        'href': 'https://discord.gg/4QgKst2hF7',
+        'icon': '$si-discord'
+      },
       {
         'href': 'https://github.com/baking-bad/bcd/issues',
         'icon': 'mdi-github'
@@ -44,17 +48,17 @@ export default {
         'icon': 'mdi-twitter'
       },
       {
-        'href': 'tg://resolve?domain=baking_bad_chat',
-        'icon': 'mdi-telegram'
-      },
-      {
         'href': 'https://tezos-dev.slack.com/archives/CV5NX7F2L',
         'icon': 'mdi-slack'
       },
       {
+        'href': 'tg://resolve?domain=baking_bad_chat',
+        'icon': '$si-telegram'
+      },
+      {
         'href': 'mailto:hello@baking-bad.org',
         'icon': 'mdi-email'
-      }
+      },
     ]
   }),
   computed: {

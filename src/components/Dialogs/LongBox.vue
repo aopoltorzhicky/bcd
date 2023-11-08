@@ -26,6 +26,7 @@
             <v-card-text class="pt-7">
                 <v-row no-gutters>
                     <v-col cols="12">
+                        <!-- eslint-disable-next-line -->
                         <HexView v-if="hex" v-model="text"/>
                         <ValueInspector
                             v-else

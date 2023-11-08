@@ -30,7 +30,7 @@ import VueJsonPretty from "vue-json-pretty";
 import '@/styles/vue-json-pretty.css';
 
 export default {
-  name: "Metadata",
+  name: "MetadataTab",
   components: { VueJsonPretty },
   props: {
     metadata: Object,

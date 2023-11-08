@@ -15,6 +15,9 @@ module.exports = {
     'no-unused-vars': 'off'
   },
   parserOptions: {
-    parser: 'babel-eslint'
-  }
+    parser: '@babel/eslint-parser',
+    requireConfigFile: false,
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
 }

@@ -3,9 +3,11 @@
   "version": "4.5.2",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "vite --open",
+    "preview": "vite preview --open --port 8080",
+    "build": "vite build",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "dependencies": {
     "@airgap/beacon-sdk": "^4.0.12",
@@ -19,7 +21,8 @@
     "axios": "^0.21.4",
     "bignumber.js": "^9.0.1",
     "bs58check": "^3.0.1",
-    "codemirror": "^5.58.2",
+    "buffer": "^6.0.3",
+    "codemirror": "^6.0.1",
     "dayjs": "^1.8.23",
     "deep-diff": "^1.0.2",
     "diff-match-patch": "^1.0.4",
@@ -35,6 +38,7 @@
     "redoc": "^2.0.0-rc.65",
     "sanitize-html": "^2.7.0",
     "stream": "^0.0.2",
+    "stream-browserify": "^3.0.0",
     "v-clipboard": "^3.0.0-next.1",
     "vue": "^2.6.10",
     "vue-codemirror": "^4.0.6",
@@ -51,16 +55,15 @@
     "vuex": "^3.1.3"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.22.15",
     "@mdi/font": "^5.0.45",
     "@mdi/js": "^5.0.45",
-    "@vue/cli": "^5.0.8",
-    "@vue/cli-plugin-eslint": "^5.0.8",
-    "@vue/cli-service": "^5.0.8",
+    "@vue/compiler-sfc": "^3.3.8",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8.53.0",
     "eslint-plugin-vue": "^9.18.1",
     "sass": "~1.32.6",
-    "sass-loader": "^8.0.2",
+    "vite": "^4.5.0",
+    "vite-plugin-vue2": "^2.0.3",
     "vue-cli-plugin-vuetify": "^2.0.5",
     "vue-template-compiler": "^2.6.10",
     "vuetify-loader": "^1.3.0"
@@ -77,10 +80,7 @@
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    }
+    ]
   },
   "postcss": {
     "plugins": {

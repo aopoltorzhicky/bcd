@@ -142,10 +142,10 @@
 </template>
 
 <script>
-import SchemaOptionalSettings from "./SchemaOptionalSettings";
+import SchemaOptionalSettings from "./SchemaOptionalSettings.vue";
 import ApproveForm from "./approve/ApproveForm.vue";
-import SchemaFormExecutionActions from "./SchemaFormExecutionActions";
-import Michelson from "@/components/Michelson";
+import SchemaFormExecutionActions from "./SchemaFormExecutionActions.vue";
+import Michelson from "@/components/Michelson.vue";
 import { validationRules } from "@/utils/tz.js";
  
 export default {

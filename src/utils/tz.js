@@ -1,7 +1,6 @@
 import BigNumber from "bignumber.js";
-
-var bs58check = require("bs58check");
-var dayjs = require("dayjs");
+import bs58check from "bs58check";
+import dayjs from "dayjs";
 
 export function checkAddress(address) {
     if (address === undefined && address == null) return false;

@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import WarningSnackbar from "@/components/Snackbar/WarningSnackbar";
+import WarningSnackbar from "@/components/Snackbar/WarningSnackbar.vue";
 import ErrorSnackbar from "@/components/Snackbar/ErrorSnackbar.vue";
 import SuccessSnackbar from "@/components/Snackbar/SuccessSnackbar.vue";
-import MainHeaderDescriptive from "./components/MainHeaderDescriptive";
+import MainHeaderDescriptive from "./components/MainHeaderDescriptive.vue";
 
 export default {
   name: "App",

@@ -8,7 +8,8 @@
 </template>
 
 <script>
-var images = require.context('@/assets/', false, /\.png$/)
+// var images = require.context('@/assets/', false, /\.png$/)
+import images from "@/assets/*.png";
 
 export default {
   name: "EmptyState",

@@ -36,11 +36,11 @@
 </template>
 
 <script>
-import SocialsList from "./SocialsList";
-import SearchBox from "./SearchBox";
-import ThemeSwitcher from "./ThemeSwitcher";
-import Bookmarks from "./Bookmarks/Bookmarks";
-import ConnectWallet from "@/components/ConnectWallet";
+import SocialsList from "./SocialsList.vue";
+import SearchBox from "./SearchBox.vue";
+import ThemeSwitcher from "./ThemeSwitcher.vue";
+import Bookmarks from "./Bookmarks/Bookmarks.vue";
+import ConnectWallet from "@/components/ConnectWallet.vue";
 
 export default {
   name: "MainHeaderDescriptive",

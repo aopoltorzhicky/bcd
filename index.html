@@ -6,12 +6,12 @@
     <meta name="description" content="Tezos smart contract explorer simplifies perception and facilitates interaction. By Baking Bad.">
     <meta name="keywords" content="Tezos, blockchain, explorer, smart contract, block explorer, dapp, crypto, cryptocurrency, XTZ, search, analysis, michelson, ligo, smartpy, lorentz, token, big map, sandbox">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property="og:url" content="<%= BASE_URL %>">
+    <meta property="og:url" content="/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Better Call Dev">
     <meta property="og:description" content="Tezos smart contract explorer and API provider. Easy to spin up / integrate with your sandbox.">
-    <meta property="og:image" content="<%= BASE_URL %>img/logo_og.png">
-    <meta property="og:image:secure_url" content="<%= BASE_URL %>img/logo_og.png">
+    <meta property="og:image" content="/img/logo_og.png">
+    <meta property="og:image:secure_url" content="/img/logo_og.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="64">
     <meta property="og:image:height" content="64">
@@ -19,8 +19,8 @@
     <meta name="twitter:creator" content="@TezosBakingBad">
     <meta name="twitter:title" content="Better Call Dev">
     <meta name="twitter:description" content="Tezos smart contract explorer and API provider. Easy to spin up / integrate with your sandbox.">
-    <meta name="twitter:image" content="<%= BASE_URL %>img/logo_og.png">
-    <link rel="icon" href="<%= BASE_URL %>img/favicon.ico">
+    <meta name="twitter:image" content="/img/logo_og.png">
+    <link rel="icon" href="/img/favicon.ico">
     <title>Better Call Dev — Tezos smart contract explorer by Baking Bad</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto+Mono:wght@100;300;400;500&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
   </head>
@@ -30,5 +30,12 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <!-- this new script is for vite -->
+    <script type="module" src="/src/main.js"></script>
+    <!-- polyfill global because shit dependencies -->
+    <script>
+      const global = globalThis;
+    </script>
+    <!-- end polyfill -->
   </body>
 </html>

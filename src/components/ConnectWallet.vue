@@ -26,7 +26,7 @@
             <v-list-item-content>
               <v-list-item-title>{{account.walletName}}</v-list-item-title>
               <v-list-item-subtitle class="hash" v-past-html="helpers.shortcut(account.address, 6)"></v-list-item-subtitle>
-              <v-list-item-subtitle class="overline">{{ account.network.type }}</v-list-item-subtitle>
+              <v-list-item-subtitle class="overline">{{ account.network.name }}</v-list-item-subtitle>
             </v-list-item-content>
             <v-list-item-action>
               <v-tooltip bottom>
@@ -102,7 +102,7 @@ export default {
     },
     async logOut() {
       this.isOpened = false;
-      if(Wallet.wallet) {
+      if (Wallet.wallet) {
         await Wallet.wallet.clearActiveAccount();
       }
       localStorage.removeItem('beacon:accounts')

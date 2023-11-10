@@ -31,10 +31,10 @@ import BigMap from '@/views/big_map/BigMap.vue'
 import BigMapKeys from '@/views/big_map/KeysTab.vue'
 import BigMapHistory from '@/views/big_map/HistoryTab.vue'
 
-import NotFound from "../views/errors/NotFound";
-import DetailsTab from "../views/contract/DetailsTab/DetailsTab";
-import ConstantTab from "@/views/constant/ConstantTab";
-import Constant from "@/views/constant/Constant";
+import NotFound from "../views/errors/NotFound.vue";
+import DetailsTab from "../views/contract/DetailsTab/DetailsTab.vue";
+import ConstantTab from "@/views/constant/ConstantTab.vue";
+import Constant from "@/views/constant/Constant.vue";
 import ContractStatsTab from "@/views/contract/StatsTab.vue";
 
 import {checkAddress, isKT1Address} from '@/utils/tz.js'

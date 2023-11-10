@@ -86,14 +86,14 @@
 <script>
 import { mapActions } from "vuex";
 import { cancelRequests } from "@/utils/cancellation.js";
-import {toTitleCase} from "../../utils/string";
-import {shortcutOnly} from "../../utils/tz";
-import MenuToolbar from "./MenuToolbar";
-import Tags from "../../components/Tags";
+import { toTitleCase } from "../../utils/string.js";
+import { shortcutOnly } from "../../utils/tz.js";
+import MenuToolbar from "./MenuToolbar.vue";
+import Tags from "../../components/Tags.vue";
 import BookmarkButton from "../../components/Bookmarks/BookmarkButton.vue";
-import {openTzktContract} from "../../utils/tzkt";
-import {DATA_LOADING_STATUSES} from "../../utils/network";
-import {applyStyles} from "../../utils/styles";
+import { openTzktContract } from "../../utils/tzkt.js";
+import { DATA_LOADING_STATUSES } from "../../utils/network.js";
+import { applyStyles } from "../../utils/styles.js";
 
 const MIN_SEARCHBOX_WIDTH = 240;
 

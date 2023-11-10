@@ -1,4 +1,4 @@
-const axios = require('axios').default;
+import axios from "axios";
 
 export function createAxios(baseURL, timeout = 10000) {
     if (!baseURL) return null;

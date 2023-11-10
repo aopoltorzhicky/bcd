@@ -72,9 +72,9 @@ import {mapActions} from "vuex";
 import Michelson from "@/components/Michelson.vue";
 import ErrorState from "@/components/ErrorState.vue";
 import RawJsonViewer from "@/components/Dialogs/RawJsonViewer.vue";
-import {downloadFileFormContent} from "@/utils/download";
-import UsingConstantsDialog from "@/components/UsingConstantsDialog";
-import { copyToClipboard } from "@/utils/clipboard";
+import {downloadFileFormContent} from "@/utils/download.js";
+import UsingConstantsDialog from "@/components/UsingConstantsDialog.vue";
+import { copyToClipboard } from "@/utils/clipboard.js";
 
 export default {
   props: {

@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import NetworkInfo from "./NetworkInfo";
-import Toolbar from "@/views/network/Toolbar";
+import NetworkInfo from "./NetworkInfo.vue";
+import Toolbar from "@/views/network/Toolbar.vue";
 
 export default {
   name: "NetworkTab",

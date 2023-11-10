@@ -1,4 +1,5 @@
-import {DAppClient, ColorMode, NetworkType} from "@airgap/beacon-sdk";
+import { DAppClient, ColorMode, NetworkType } from "@airgap/beacon-sdk";
+// import { PermissionScope } from "@airgap/beacon-types";
 import TZKTBlockExplorer from "@/utils/tzkt";
 
 const CORRECT_NETWORK_TYPES = {
@@ -16,12 +17,12 @@ export class Wallet {
 
         Wallet.wallet = new DAppClient({
             name: "Better Call Dev",
-            eventHandlers,
-            preferredNetwork: network in CORRECT_NETWORK_TYPES ? CORRECT_NETWORK_TYPES[network] : network,
-            blockExplorer: new TZKTBlockExplorer(),
+            // eventHandlers,
+            // preferredNetwork: network in CORRECT_NETWORK_TYPES ? CORRECT_NETWORK_TYPES[network] : NetworkType.GHOSTNET,
+            // blockExplorer: new TZKTBlockExplorer(),
         });
 
-        await Wallet.setTheme();
+        // await Wallet.setTheme();
 
         return Wallet.wallet
     }
@@ -40,18 +41,23 @@ export class Wallet {
         let client;
 
         if (Wallet.wallet) {
+            console.log("it's a wallet");
             client = Wallet.wallet;
             await Wallet.setTheme();
         } else {
+            console.log("it's not a wallet");
             client = await Wallet.getWallet(network, eventHandlers)
         }
 
         if (!isLast) {
+            console.log("Not isLast");
             Wallet.isPermissionGiven = false            
             await this.getNewPermissions(network, isLast);            
         } else {
+            console.log("isLast");
             if (!Wallet.isPermissionGiven) {
-                await this.getNewPermissions(network, isLast);
+                console.log("No permissions given");
+                const permissions = await this.getNewPermissions(network, isLast);
             }
         }
 
@@ -92,38 +98,52 @@ export class Wallet {
     static async getNewPermissions(network, isLast) {
         const rpcUrl = window.config.rpc_endpoints[network];
         const type = CORRECT_NETWORK_TYPES[network] || network;
-        if (!isLast) {
-            await Wallet.wallet.clearActiveAccount();
-        } else {
-            await Wallet.wallet.setActiveAccount(Wallet.getLastUsedAccount());
-        }
-
+        // if (!isLast) {
+        //     console.log("getNewPermissions !isLast");
+        //     await Wallet.wallet.clearActiveAccount();
+        // } else {
+        //     console.log("getNewPermissions isLast");
+        //     await Wallet.wallet.setActiveAccount(Wallet.getLastUsedAccount());
+        // }
         const activeAccount = await this.wallet.getActiveAccount();
+        
+        return this.wallet.requestPermissions();
 
-        return new Promise((resolve, reject) => {
-            if(activeAccount) {
-                Wallet.isPermissionGiven = true;
-                return resolve();
-            }
+        // return new Promise((resolve, reject) => {
+        //     if(activeAccount) {
+        //         console.log("getNewPermissions activeAccount");
+        //         Wallet.isPermissionGiven = true;
+        //         return resolve();
+        //     }
+        //     console.log("getNewPermissions !activeAccount");
+        //     // this.wallet.requestPermissions({
+        //     //     network: {
+        //     //         type: type in CORRECT_NETWORK_TYPES ? CORRECT_NETWORK_TYPES[type] : type,
+        //     //         name: network,
+        //     //         rpcUrl,
+        //     //     },
+        //     // })
+        //     // const scopes = [
+        //     //     PermissionScope.OPERATION_REQUEST,
+        //     //     PermissionScope.SIGN,
+        //     // ];
 
-            this.wallet.requestPermissions({
-                network: {
-                    type: type in CORRECT_NETWORK_TYPES ? CORRECT_NETWORK_TYPES[type] : type,
-                    rpcUrl
-                }
-            })
-            .then(() => {
-                Wallet.isPermissionGiven = true;
-                resolve();
-            })
-            .catch(e => {
-                if (e.title && e.title.toUpperCase() === 'ABORTED') {
-                    resolve();
-                } else {
-                    reject();
-                }
-            })
-        })
+        //     this.wallet.requestPermissions()
+        //     .then(() => {
+        //         console.log(".then requestPermissions");
+        //         Wallet.isPermissionGiven = true;
+        //         resolve();
+        //     })
+        //     .catch(e => {
+        //         console.log(".catch requestPermissions");
+        //         if (e.title && e.title.toUpperCase() === 'ABORTED') {
+        //             resolve();
+        //         } else {
+        //             console.log(e);
+        //             reject();
+        //         }
+        //     })
+        // })
     }
 
     static async setTheme() {

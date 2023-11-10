@@ -76,17 +76,17 @@
 import { mapActions } from "vuex";
 import Vue from 'vue';
 import RawJsonViewer from "@/components/Dialogs/RawJsonViewer.vue";
-import SchemaForm from "./schemaForm/SchemaForm";
-import SchemaResultOPG from "./schemaDialog/SchemaResultOPG";
-import SchemaCmdLine from "./schemaDialog/SchemaCmdLine";
-import SchemaMichelson from "./schemaDialog/SchemaMichelson";
-import SchemaAlertOpHashSuccess from "./schemaAlert/SchemaAlertOpHashSuccess";
-import SchemaHeader from "./schemaComponents/SchemaHeader";
-import SchemaAlertCustomSuccess from "./schemaAlert/SchemaAlertCustomSuccess";
+import SchemaForm from "./schemaForm/SchemaForm.vue";
+import SchemaResultOPG from "./schemaDialog/SchemaResultOPG.vue";
+import SchemaCmdLine from "./schemaDialog/SchemaCmdLine.vue";
+import SchemaMichelson from "./schemaDialog/SchemaMichelson.vue";
+import SchemaAlertOpHashSuccess from "./schemaAlert/SchemaAlertOpHashSuccess.vue";
+import SchemaHeader from "./schemaComponents/SchemaHeader.vue";
+import SchemaAlertCustomSuccess from "./schemaAlert/SchemaAlertCustomSuccess.vue";
 import { TezosOperationType, AbortedBeaconError, BroadcastBeaconError, defaultEventCallbacks } from '@airgap/beacon-sdk'
-import {Wallet, isCustom} from "@/utils/wallet";
-import { approveData } from "@/utils/approve";
-import ConfirmDialog from "@/components/Dialogs/ConfirmDialog";
+import {Wallet, isCustom} from "@/utils/wallet.js";
+import { approveData } from "@/utils/approve.js";
+import ConfirmDialog from "@/components/Dialogs/ConfirmDialog.vue";
 
 const walletsToIcons = {
   "Temple - Tezos Wallet (ex. Thanos)": "mdi-alpha-t",
@@ -296,8 +296,8 @@ export default {
     },
     async checkWalletNetwork() {
       const account = Wallet.getLastUsedAccount();
-
-      const isNetwork =  account && 
+      console.log(account);
+      const isNetwork = account && 
         !isCustom(account.network.type) &&
         account.network.type !== this.selectedNetwork
 

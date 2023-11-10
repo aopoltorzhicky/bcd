@@ -115,7 +115,7 @@
 </template>
 
 <script>
-import Tags from "@/components/Tags";
+import Tags from "@/components/Tags.vue";
 import { getAccountAlias } from '@/api/search.js';
 
 export default {

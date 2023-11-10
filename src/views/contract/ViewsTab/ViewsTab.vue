@@ -103,12 +103,12 @@
 </template>
 
 <script>
-import SchemaHeader from "../../../components/schema/schemaComponents/SchemaHeader";
-import SchemaForm from "../../../components/schema/schemaForm/SchemaForm";
-import TreeNodeDetails from "../../../components/Dialogs/TreeNodeDetails";
-import MiguelTreeView from "../../../components/MiguelTreeView";
-import TypeDef from "../TypeDef";
 import { mapActions } from "vuex";
+import SchemaHeader from "@/components/schema/schemaComponents/SchemaHeader.vue";
+import SchemaForm from "@/components/schema/schemaForm/SchemaForm.vue";
+import TreeNodeDetails from "@/components/Dialogs/TreeNodeDetails.vue";
+import MiguelTreeView from "@/components/MiguelTreeView.vue";
+import TypeDef from "../TypeDef.vue";
 
 export default {
   name: "ViewsTab",

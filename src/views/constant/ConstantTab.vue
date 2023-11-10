@@ -48,14 +48,14 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
-import ConstantInfo from "./ConstantInfo";
-import Michelson from "@/components/Michelson";
+import { mapActions } from "vuex";
+import ConstantInfo from "./ConstantInfo.vue";
+import Michelson from "@/components/Michelson.vue";
 import RawJsonViewer from "@/components/Dialogs/RawJsonViewer.vue";
-import { copyToClipboard } from "@/utils/clipboard";
-import {downloadFileFormContent} from "@/utils/download";
-import {toTitleCase} from "@/utils/string";
-import ReferenceContract from "@/views/constant/ReferenceContract";
+import { copyToClipboard } from "@/utils/clipboard.js";
+import { downloadFileFormContent } from "@/utils/download.js";
+import { toTitleCase } from "@/utils/string.js";
+import ReferenceContract from "@/views/constant/ReferenceContract.vue";
 
 export default {
   name: "NetworkTab",

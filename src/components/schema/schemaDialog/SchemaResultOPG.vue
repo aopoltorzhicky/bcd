@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import InternalOperation from "@/components/InternalOperation";
+import InternalOperation from "@/components/InternalOperation.vue";
 
 export default {
 name: "SchemaResultOPG",

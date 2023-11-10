@@ -69,8 +69,8 @@
 <script>
 import { mapActions } from "vuex";
 import SearchBox from "@/components/SearchBox.vue";
-import {DATA_LOADING_STATUSES} from "../../utils/network";
-import RecentlyCalledContracts from "../../components/Tables/RecentlyCalledContracts";
+import { DATA_LOADING_STATUSES } from "../../utils/network.js";
+import RecentlyCalledContracts from "../../components/Tables/RecentlyCalledContracts.vue";
 
 export default {
   name: "Home",

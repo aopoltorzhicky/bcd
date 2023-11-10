@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import EmptyState from "../../components/Cards/EmptyState";
+import EmptyState from "../../components/Cards/EmptyState.vue";
 export default {
   name: "NotFound",
   components: {EmptyState},

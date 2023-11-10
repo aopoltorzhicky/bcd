@@ -29,7 +29,8 @@ import { makeVuetify } from '@/plugins/vuetify';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import utc from 'dayjs/plugin/utc';
-import PortalVue from 'portal-vue'
+import PortalVue from 'portal-vue';
+import { Buffer } from 'buffer';
 
 import { fixNavigationCurrentLocationProblem } from '@/setups/router';
 
@@ -131,6 +132,8 @@ Vue.directive('pastHtml', {
       el.innerHTML = binding.value;
     }
 })
+
+window.Buffer = window.Buffer || Buffer;
 
 let config = {
   API_URI: process.env.VUE_APP_API_URI || `${window.location.protocol}//${window.location.host}/v1`,

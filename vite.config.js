@@ -4,7 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [
-    createVuePlugin()
+    createVuePlugin(),
 ],
   server: {
     port: 8080
@@ -19,6 +19,6 @@ export default defineConfig({
   },
   build: {
     chunkSizeWarningLimit: 600,
-    cssCodeSplit: false
+    cssCodeSplit: false,
   }
 });

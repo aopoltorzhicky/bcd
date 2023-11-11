@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import { codemirror } from "vue-codemirror-lite";
-import 'codemirror/mode/simple.js';
-import 'codemirror/display/autorefresh.js';
+import { codemirror } from 'vue-codemirror-lite';
+import 'codemirror/addon/mode/simple.js';
+import 'codemirror/addon/display/autorefresh.js';
 import 'codemirror/addon/search/searchcursor.js';
-import "codemirror/theme/darcula.css";
-import "codemirror/theme/neo.css";
+import 'codemirror/theme/darcula.css';
+import 'codemirror/theme/neo.css';
 
 import { create } from "@/utils/codemirror.js";
 

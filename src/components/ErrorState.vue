@@ -1,7 +1,7 @@
 <template>
   <div class="ml-8 pl-8 flex-column d-flex align-center justify-center">
       <v-img
-        :src="imageName"
+        :src="$vuetify.theme.isDark ? errorStateDarkImage : errorStateLightImage"
         contain
         max-height="300px"
       ></v-img>
@@ -26,8 +26,8 @@
 </template>
 
 <script>
-// var images = require.context('@/assets/', false, /\.png$/)
-import images from "@/assets/*.png";
+import errorStateDarkImage from '@/assets/error_state_dark.png'
+import errorStateLightImage from '@/assets/error_state_light.png'
 
 export default {
   name: "ErrorState",
@@ -35,6 +35,8 @@ export default {
     code: Number,
   },
   data: () => ({
+    errorStateDarkImage,
+    errorStateLightImage,
     links: [
       {
         'href': 'https://github.com/baking-bad/bcd/issues',
@@ -57,12 +59,6 @@ export default {
         'icon': 'mdi-email'
       }
     ]
-  }),
-  computed: {
-    imageName() {
-      if (this.$vuetify.theme.isDark) return images('./error_state_dark.png');
-      return images('./error_state_light.png');
-    }
-  },
+  })
 };
 </script>

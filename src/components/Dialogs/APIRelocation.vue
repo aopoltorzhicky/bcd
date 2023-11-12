@@ -10,7 +10,7 @@
           </v-btn>
       </v-card-title>
       <v-card-text class="d-flex flex-column align-center justify-center">    
-          <v-img :src="imageName" max-height="300" contain></v-img>    
+          <v-img :src="$vuetify.theme.isDark ? apiRelocateDarkImage : apiRelocateLightImage" max-height="300" contain></v-img>    
           <div class="information font-weight-regular mt-2">
             <span>
               The BCD API is about to become non-public. This means that the API schema may change without notice and without maintaining backward compatibility. Please use the
@@ -29,19 +29,21 @@
 </template>
 
 <script>
-// var images = require.context('@/assets/', false, /\.png$/)
-import images from "@/assets/*.png";
+import apiRelocateDarkImage from '@/assets/api_relocate_dark.png'
+import apiRelocateLightImage from '@/assets/api_relocate_light.png'
 
 export default {
   name: "APIRelocation",
   props: {
     value: Boolean
   },
+  data() {
+    return {
+      apiRelocateDarkImage, 
+      apiRelocateLightImage
+    }
+  },
   computed: {
-    imageName() {
-      if (this.$vuetify.theme.isDark) return images('./api_relocate_dark.png');
-      return images('./api_relocate_light.png');
-    },
     show: {
       get() {
         return this.value;

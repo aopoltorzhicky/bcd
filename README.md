@@ -14,14 +14,14 @@ BCD uses the same `X.Y.Z` scheme as BCDHub (see https://github.com/baking-bad/bc
 
 * `NODE_ENV` _production_ for production env, _development_ otherwise
 * `BASE_URL` set to _https://better-call.dev/_ for production
-* `VUE_APP_API_URI` set to _https://api.better-call.dev/_ for production
-* `VUE_APP_IPFS_NODE` link to IPFS node
-* `VUE_APP_SEARCH_SERVICE_URI` link to search service
-* `VUE_APP_TOKEN_METADATA_API` link to metadata service which contains indexed token metadata
-* `VUE_APP_METADATA_API_URI` link to metadata service which contains indexed contract metadata
-* `VUE_APP_MAINNET_STATS_API_URI` link to mainnet statistics service
-* `VUE_APP_TESTNET_STATS_API_URI` link to current testnet statistics service
-* `VUE_APP_GHOSTNET_STATS_API_URI` link to ghostnet statistics service
+* `VITE_API_URI` set to _https://api.better-call.dev/_ for production
+* `VITE_IPFS_NODE` link to IPFS node
+* `VITE_SEARCH_SERVICE_URI` link to search service
+* `VITE_TOKEN_METADATA_API` link to metadata service which contains indexed token metadata
+* `VITE_METADATA_API_URI` link to metadata service which contains indexed contract metadata
+* `VITE_MAINNET_STATS_API_URI` link to mainnet statistics service
+* `VITE_TESTNET_STATS_API_URI` link to current testnet statistics service
+* `VITE_GHOSTNET_STATS_API_URI` link to ghostnet statistics service
 
 ## Run locally
 ```

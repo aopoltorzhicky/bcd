@@ -15,7 +15,7 @@
         </v-btn-toggle>
       </div>
       <v-skeleton-loader :loading="!show" type="article" transition="fade-transition">
-        <v-jsf
+        <JSchema
           v-model="model"
           :schema="schema"
           :options="{
@@ -93,7 +93,7 @@
               </template>
             </v-text-field>
           </template>
-        </v-jsf>
+        </JSchema>
       </v-skeleton-loader>
     </div>
     <div v-else-if="fallbackText">
@@ -142,15 +142,18 @@
 </template>
 
 <script>
+import JSchema from '@baking-bad/vjsf/lib/VJsf';
+
 import SchemaOptionalSettings from "./SchemaOptionalSettings.vue";
 import ApproveForm from "./approve/ApproveForm.vue";
 import SchemaFormExecutionActions from "./SchemaFormExecutionActions.vue";
 import Michelson from "@/components/Michelson.vue";
 import { validationRules } from "@/utils/tz.js";
- 
+
 export default {
 name: "SchemaForm",
   components: {
+    JSchema,
     Michelson,
     SchemaFormExecutionActions,
     SchemaOptionalSettings,

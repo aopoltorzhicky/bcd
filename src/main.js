@@ -136,21 +136,21 @@ Vue.directive('pastHtml', {
 window.Buffer = window.Buffer || Buffer;
 
 let config = {
-  API_URI: process.env.VUE_APP_API_URI || `${window.location.protocol}//${window.location.host}/v1`,
+  API_URI: import.meta.env.VITE_API_URI || `${window.location.protocol}//${window.location.host}/v1`,
   HOME_PAGE: 'home',
-  IPFS_NODE: process.env.VUE_APP_IPFS_NODE || "https://ipfs.io",
+  IPFS_NODE: import.meta.env.VITE_IPFS_NODE || "https://ipfs.io",
 }
 
 let api = new BetterCallApi(config.API_URI);
 let bookmarks = new Bookmarks();
 let aliases = new Aliases(1000);
-let searchService = new SearchService(process.env.VUE_APP_SEARCH_SERVICE_URI);
-let tokenMetadata = new TokenMetadataApi(process.env.VUE_APP_TOKEN_METADATA_API);
-let metadataService = new MetadataAPI(process.env.VUE_APP_METADATA_API_URI);
+let searchService = new SearchService(import.meta.env.VITE_SEARCH_SERVICE_URI);
+let tokenMetadata = new TokenMetadataApi(import.meta.env.VITE_TOKEN_METADATA_API);
+let metadataService = new MetadataAPI(import.meta.env.VITE_METADATA_API_URI);
 let stats = new StatsAPI({
-  'mainnet': process.env.VUE_APP_MAINNET_STATS_API_URI,
-  'nairobinet': process.env.VUE_APP_TESTNET_STATS_API_URI,
-  'ghostnet': process.env.VUE_APP_GHOSTNET_STATS_API_URI,
+  'mainnet': import.meta.env.VITE_MAINNET_STATS_API_URI,
+  'nairobinet': import.meta.env.VITE_TESTNET_STATS_API_URI,
+  'ghostnet': import.meta.env.VITE_GHOSTNET_STATS_API_URI,
 });
 
 const darkLocalStorage = localStorage.getItem('dark');
@@ -239,10 +239,10 @@ api.getConfig().then(response => {
     }, router);
   }
 
-  if (process.env.VUE_APP_SENTRY_URI) {
+  if (import.meta.env.VITE_SENTRY_URI) {
     Sentry.init({
       Vue,
-      dsn: process.env.VUE_APP_SENTRY_URI,
+      dsn: import.meta.env.VITE_SENTRY_URI,
       integrations: [new BrowserTracing({
         routingInstrumentation: Sentry.vueRouterInstrumentation(router),
         tracingOrigins: ["better-call.dev"],

@@ -1,14 +1,15 @@
 <template>
-  <codemirror
+  <Codemirror
     ref="editor"
     v-model="value"
     :options="cmOptions"
     :key="codeMirrorTheme"
-  ></codemirror>
+  ></Codemirror>
 </template>
 
 <script>
-import { codemirror } from 'vue-codemirror-lite';
+import Codemirror from '@/components/Codemirror.vue';
+
 import 'codemirror/addon/mode/simple.js';
 import 'codemirror/addon/display/autorefresh.js';
 import 'codemirror/addon/search/searchcursor.js';
@@ -26,7 +27,7 @@ export default {
     mutable: Boolean,
   },
   components: {
-    codemirror,
+    Codemirror,
   },
   computed: {
     editor() {

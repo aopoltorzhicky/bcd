@@ -14,9 +14,6 @@ export default defineConfig({
       ],
     }),
   ],
-  optimizeDeps: {
-    include: ['property-expr']
-  },
   server: {
     port: 8080
   },
@@ -31,5 +28,8 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 600,
     cssCodeSplit: false,
+    commonjsOptions: {
+      transformMixedEsModules: true
+    }
   }
 });

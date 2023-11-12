@@ -13,7 +13,10 @@ export default defineConfig({
         VuetifyResolver(),
       ],
     }),
-],
+  ],
+  optimizeDeps: {
+    include: ['property-expr']
+  },
   server: {
     port: 8080
   },

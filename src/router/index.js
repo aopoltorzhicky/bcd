@@ -286,8 +286,8 @@ export function newRouter(networks) {
         ]
       },
       {
-        path: '/:network(mainnet|ghostnet|nairobinet|oxfordnet|sandboxnet|mondaynet|dailynet|rollupnet)/opg/:hash(o[0-9A-z]{50})',
-        alias: '/:network(mainnet|ghostnet|nairobinet|oxfordnet|sandboxnet|mondaynet|dailynet|rollupnet)/:hash(o[0-9A-z]{50})',
+        path: '/:network(mainnet|ghostnet|oxfordnet|parisnet|sandboxnet|mondaynet|dailynet|rollupnet)/opg/:hash(o[0-9A-z]{50})',
+        alias: '/:network(mainnet|ghostnet|oxfordnet|parisnet|sandboxnet|mondaynet|dailynet|rollupnet)/:hash(o[0-9A-z]{50})',
         components: {
           default: OperationGroup
         },
